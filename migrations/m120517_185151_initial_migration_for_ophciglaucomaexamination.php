@@ -385,7 +385,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
             'name' => 'Ocular History',
             'class_name' => 'ElementOcularHistory',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
 
@@ -393,91 +393,91 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
             'name' => 'Past Medical History',
             'class_name' => 'ElementPastMedicalHistory',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Family History',
             'class_name' => 'ElementFamilyHistory',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Medications',
             'class_name' => 'ElementMedications',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Prescribed Medication',
             'class_name' => 'ElementPrescribedMedication',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Risks',
             'class_name' => 'ElementRisks',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Visual Acuity',
             'class_name' => 'ElementVisualAcuity',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Anterior Segment',
             'class_name' => 'ElementAnteriorSegment',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Gonioscopy',
             'class_name' => 'ElementGonioscopy',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Intraocular Pressure',
             'class_name' => 'ElementIntraocularPressure',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Optic Disk',
             'class_name' => 'ElementOpticDisk',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Posterior Segment',
             'class_name' => 'ElementPosteriorSegment',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Glaucoma Diagnosis',
             'class_name' => 'ElementGlaucomaDiagnosis',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
         $this->insert('element_type', array(
             'name' => 'Follow Up Exam',
             'class_name' => 'ElementFollowUp',
             'event_type_id' => $event_type['id'],
-            'display_order' => ++$this->order,
+            'display_order' => ++$order,
             'default' => 1,
         ));
     }
