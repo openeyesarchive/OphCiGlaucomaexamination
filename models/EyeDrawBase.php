@@ -94,10 +94,12 @@ class EyeDrawBase extends BaseEventTypeElement {
         /* Dirty hack - see if any of the angle grades have values different
          * to -176 - if they have, it's been set; else move on: */
         $json = json_decode($image_string);
-        foreach ($json as $element) {
-            if ($element->{'subclass'} == "AngleGrade") {
-                if ($element->{'apexY'} != -176) {
-                    $hasValues = true;
+        if ($json) {
+            foreach ($json as $element) {
+                if ($element->{'subclass'} == "AngleGrade") {
+                    if ($element->{'apexY'} != -176) {
+                        $hasValues = true;
+                    }
                 }
             }
         }
