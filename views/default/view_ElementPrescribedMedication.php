@@ -26,11 +26,12 @@ if ($element->medication_1) {
         <h4>
             <div class="eventHighlight">
                 <?php
-                echo $element->getMedication($element->medication_1 + 1);
+                $medications = $element->getMedications();
+                echo $medications[$element->medication_1];
                 if ($element->medication_2) {
-                    echo ", " . $element->getMedication($element->medication_2);
+                    echo ", " . $medications[$element->medication_2];
                     if ($element->medication_3) {
-                        echo ", " . $element->getMedication($element->medication_3);
+                        echo ", " . $medications[$element->medication_3];
                     }
                 }
                 ?>

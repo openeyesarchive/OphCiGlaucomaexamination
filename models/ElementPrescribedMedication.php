@@ -1,4 +1,5 @@
 <?php
+
 /**
  * OpenEyes
  *
@@ -18,35 +19,21 @@
  */
 ?>
 <?php
+
 /**
- * This is the model class for table "element_intraocular_pressure".
- *
- * The followings are the available columns in table 'element_intraocular_pressure':
+ * Models the relationship between medications, groups, and groups that are not
+ * compatible with each other.
+ * 
+ * Although it suits a lot of elements to store data in the class itself,
+ * there is potential in moving all of this data to the database such that
+ * a generic set of medication rules can be built up and reused by other
+ * areas of clinicial use.
+ * 
  * @property string $id
  * @property string $event_id
- * @property integer $right_iop
- * @property integer $left_iop
  */
 class ElementPrescribedMedication extends BaseEventTypeElement {
-    
-    const ALPHAGEN = 1;
-    const AZOPT = 2;
-    const BETOPTIC = 3;
-    const COMBIGAN = 4;
-    const COSOPT = 5;
-    const DIAMOX = 6;
-    const DIAMOX_SR = 7;
-    const GANFORTE = 8;
-    const IOPIDINE = 9;
-    const LUMIGAN = 10;
-    const PGA_AZAGRA = 11;
-    const PILOCARPINE = 12;
-    const TEOPTIC = 13;
-    const TIMOLOL = 14;
-    const TRAVATAN = 15;
-    const TRUSOPT = 16;
-    const XALATAN = 17;
-    const XALCOM = 18;
+
     /**
      * Returns the static model of the specified AR class.
      * @return ElementIntraocularPressure the static model class
@@ -122,109 +109,91 @@ class ElementPrescribedMedication extends BaseEventTypeElement {
     }
     
     /**
+     * Gets the list of glaucoma medications.
      * 
-     * @return type
+     * Note that this is a refactor of a previous incarnation, in a move
+     * to move all values to the database.
+     * 
+     * @return array of medications, indexed alphabetically as an associative
+     * array of int(index) => string(medication) values.
      */
-    public function getMedicationGroups() {
-        // index -> array(name, array(medications), array(selectRemovalGroups))
-        return array(0 => array('PGA', 
-            array(ElementPrescribedMedication::XALATAN => 'Xalatan', 
-               ElementPrescribedMedication::LUMIGAN => 'Lumigan', 
-               ElementPrescribedMedication::TRAVATAN => 'Travatan'), 
-                                       array('PGA', 'cPGA')),
-            1 => array('BB', array(
-                ElementPrescribedMedication::TIMOLOL => 'Timolol', 
-                ElementPrescribedMedication::TEOPTIC => 'Teoptic', 
-                ElementPrescribedMedication::BETOPTIC => 'Betopic'), 
-                                       array('BB', 'cPGA', 'cCAI', 'cAA')),
-            2 => array('CAI', array(
-                ElementPrescribedMedication::TRUSOPT => 'Trusopt', 
-                ElementPrescribedMedication::AZOPT => 'Azopt'), 
-                                       array('CAI', 'cCAI', 'tCAI')),
-            3 => array('Pilo', array(
-                ElementPrescribedMedication::PILOCARPINE => 'Pilocarpine'), 
-                                       array('Pilo')),
-            4 => array('AA', array(
-                ElementPrescribedMedication::ALPHAGEN => 'Alphagen', 
-                ElementPrescribedMedication::IOPIDINE => 'Iopidine'), 
-                                       array('AA', 'cAA')),
-            5 => array('cPGA', array(
-                ElementPrescribedMedication::GANFORTE => 'Ganforte', 
-                ElementPrescribedMedication::XALCOM => 'Xalcom'), 
-                                       array('PGA', 'cPGA', 'BB')),
-            6 => array('cCAI', array(
-                ElementPrescribedMedication::COSOPT => 'Cosopt', 
-                ElementPrescribedMedication::PGA_AZAGRA => 'PGAAzagra'), 
-                                       array('CAI', 'cCAI', 'BB')),
-            7 => array('cAA', array(
-                ElementPrescribedMedication::COMBIGAN => 'Combigan'), 
-                                       array('cAA', 'AA', 'BB')),
-            8 => array('tCAI', array(
-                ElementPrescribedMedication::DIAMOX => 'Diamox', 
-                ElementPrescribedMedication::DIAMOX_SR => 'Diamox SR'), 
-                                       array('CAI', 'tCAI')),
-            );
+    function getMedications() {
+        return array(
+            1 => 'Alphagen',
+            2 => 'Azopt',
+            3 => 'Betopic',
+            4 => 'Combigan',
+            5 => 'Cosopt',
+            6 => 'Diamox',
+            7 => 'Diamox SR',
+            8 => 'Ganforte',
+            9 => 'Iopidine',
+            10 => 'Lumigan',
+            11 => 'PGAAzagra',
+            12 => 'Pilocarpine',
+            13 => 'Teoptic',
+            14 => 'Timolol',
+            15 => 'Travatan',
+            16 => 'Trusopt',
+            17 => 'Xalatan',
+            18 => 'Xalcom',
+        );
     }
     
-    public function getMedication($index) {
-        $medication = null;
-        switch($index) {
-            case ElementPrescribedMedication::ALPHAGEN:
-                $medication = 'Alphagen';
-                break;
-            case ElementPrescribedMedication::AZOPT:
-                $medication = 'Azopt';
-                break;
-            case ElementPrescribedMedication::BETOPTIC:
-                $medication = 'Betoptic';
-                break;
-            case ElementPrescribedMedication::COMBIGAN:
-                $medication = 'Combigan';
-                break;
-            case ElementPrescribedMedication::COSOPT:
-                $medication = 'Cosopt';
-                break;
-            case ElementPrescribedMedication::DIAMOX:
-                $medication = 'Diamox';
-                break;
-            case ElementPrescribedMedication::DIAMOX_SR:
-                $medication = 'Diamox SR';
-                break;
-            case ElementPrescribedMedication::GANFORTE:
-                $medication = 'Ganforte';
-                break;
-            case ElementPrescribedMedication::IOPIDINE:
-                $medication = 'Iopidine';
-                break;
-            case ElementPrescribedMedication::LUMIGAN:
-                $medication = 'Lumigan';
-                break;
-            case ElementPrescribedMedication::PGA_AZAGRA:
-                $medication = 'PGA Azagra';
-                break;
-            case ElementPrescribedMedication::PILOCARPINE:
-                $medication = 'Pilocarpine';
-                break;
-            case ElementPrescribedMedication::TEOPTIC:
-                $medication = 'Teoptic';
-                break;
-            case ElementPrescribedMedication::TIMOLOL:
-                $medication = 'Timolol';
-                break;
-            case ElementPrescribedMedication::TRAVATAN:
-                $medication = 'Travatan';
-                break;
-            case ElementPrescribedMedication::TRUSOPT:
-                $medication = 'Trusopt';
-                break;
-            case ElementPrescribedMedication::XALATAN:
-                $medication = 'Xalatan';
-                break;
-            case ElementPrescribedMedication::XALCOM:
-                $medication = 'Xalcom';
-                break;
-        }
-        return $medication;
+    /**
+     * Gets the list of glaucoma medications mapped to medication groups.
+     * 
+     * Note that this is a refactor of a previous incarnation, in a move
+     * to move all values to the database.
+     * 
+     * @return array of medications and groups, indexed alphabetically as
+     * an associative array of string(medication) => string(medicationGroup)
+     * values.
+     */
+    function getMedicationGroups() {
+        return array(
+            'Alphagen' => 'AA',
+            'Azopt' => 'CAI',
+            'Betopic' => 'BB',
+            'Combigan' => 'cAA',
+            'Cosopt' => 'cCAI',
+            'Diamox' => 'tCAI',
+            'Diamox SR' => 'tCAI',
+            'Ganforte' => 'cPGA',
+            'Iopidine' => 'AA',
+            'Lumigan' => 'PGA',
+            'PGAAzagra' => 'cCAI',
+            'Pilocarpine' => 'Pilo',
+            'Teoptic' => 'BB',
+            'Timolol' => 'BB',
+            'Travatan' => 'PGA',
+            'Trusopt' => 'CAI',
+            'Xalatan' => 'PGA',
+            'Xalcom' => 'cPGA',
+        );
+    }
+    
+    /**
+     * Gets the list of glaucoma medication groups mapped to an array of groups
+     * that the group is not compatible with.
+     * 
+     * Note that this is a refactor of a previous incarnation, in a move
+     * to move all values to the database.
+     * 
+     * @return array of medication groups, as an associative
+     * array of string(medicationGroup) => array(groups) values.
+     */
+    function getConflictingGroups() {
+        return array(
+            'PGA' => array('PGA', 'cPGA'),
+            'BB' => array('BB', 'cPGA', 'cCAI', 'cAA'),
+            'CAI' => array('CAI', 'cCAI', 'tCAI'),
+            'Pilo' => array('Pilo'),
+            'AA' => array('AA', 'cAA'),
+            'cPGA' => array('cPGA', 'PGA', 'BB'),
+            'cCAI' => array('cCAI', '', 'CAI', 'BB'),
+            'cAA' => array('cAA', 'AA', 'BB'),
+            'tCAI' => array('tCAI', 'CAI'));
     }
 
 }

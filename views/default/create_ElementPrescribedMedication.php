@@ -19,28 +19,13 @@
 ?>
 
 <?php
-$medicationGroups = $element->getMedicationGroups();
 // list of medications for the first list:
-$medications = array();
-// map of group name to medications in that group:
-$group2medications = array();
+$medications = $element->getMedications();
 // map of to medications to group name:
-$medications2group = array();
+$medications2group = $element->getMedicationGroups();
 // map group name with array of groups NOT added with the specified group
 // (should another selection occur):
-$groupRemoval = array();
-// populate data:
-foreach ($medicationGroups as $group) {
-    $medications = array_merge($group[1], $medications);
-    foreach ($group[1] as $medication) {
-        array_push($medications2group, array($medication => $group[0]));
-    }
-    array_push($group2medications, array($group[0] => $group[1]));
-    array_push($groupRemoval, array($group[0] => $group[2]));
-}
-sort($medications);
-$medications1 = $medications;
-//$instrumentOptions = $element->getInstrumentOptions();
+$groupRemoval = $element->getConflictingGroups();
 ?>
 
 <script type="text/javascript">
@@ -50,73 +35,28 @@ $medications1 = $medications;
     var medications2 = new Array();
 <?php
 $i = 1;
-foreach ($medications2group as $medGroup) {
-    foreach ($medGroup as $med => $group) {
-        echo "medications['" . $med
-        . "'] = '" . $group . "';\n";
-        echo "medications['" . $med
-        . "'].value = " . $i++ . ";\n";
-    }
+foreach ($medications2group as $med => $medGroup) {
+//    foreach ($medGroup as $med => $group) {
+    echo "medications['" . $med
+    . "'] = '" . $medGroup . "';\n";
+    echo "medications['" . $med
+    . "'].value = " . $i++ . ";\n";
+//    }
 }
 ?>
     // step 2 - what's the current group and what groups does it conflict with?
     // step 1 - what's the current medication and it's group?
     var groupRemoval = new Array();
 <?php
-foreach ($groupRemoval as $medGroup) {
+foreach ($groupRemoval as $medGroup => $conflictingGroups) {
     $i = 0;
-    foreach ($medGroup as $med => $groups) {
-        echo "groupRemoval['" . $med . "'] = new Array();\n";
-        foreach ($groups as $group) {
-            echo "groupRemoval['" . $med . "'][" . $i . "] = '" . $group . "';\n";
-            $i++;
-        }
+    echo "groupRemoval['" . $medGroup . "'] = new Array();\n";
+    foreach ($conflictingGroups as $group) {
+        echo "groupRemoval['" . $medGroup . "'][" . $i . "] = '" . $group . "';\n";
+        $i++;
     }
 }
 ?>
-    
-    function getIndex(data) {
-        var val = 1;
-        if (data == 'Alphagen') {
-            
-        } else if (data == 'Azopt') {
-            val = 2;
-        } else if (data == 'Betopic') {
-            val = 3;
-        } else if (data == 'Combigan') {
-            val = 4;
-        } else if (data == 'Cosopt') {
-            val = 5;
-        } else if (data == 'Diamox') {
-            val = 6;
-        } else if (data == 'Diamox SR') {
-            val = 7;
-        } else if (data == 'Ganforte') {
-            val = 8;
-        } else if (data == 'Iopidine') {
-            val = 9;
-        } else if (data == 'Lumigan') {
-            val = 10;
-        } else if (data == 'PGAAzagra') {
-            val = 11;
-        } else if (data == 'Pilocarpine') {
-            val = 12;
-        } else if (data == 'Teoptic') {
-            val = 13;
-        } else if (data == 'Timolol') {
-            val = 14;
-        } else if (data == 'Travatan') {
-            val = 15;
-        } else if (data == 'Trusopt') {
-            val = 16;
-        } else if (data == 'Xalatan') {
-            val = 17;
-        } else if (data == 'Xalcom') {
-            val = 18;
-        }
-        //        alert(data + " , " + val);
-        return val;
-    }
     
     /**
      * Populate the second list according to the values held in the first
@@ -138,6 +78,7 @@ foreach ($groupRemoval as $medGroup) {
         var options = list1.options;
         list2.options.length = 0;
         option = list2.options[list2.options.length] = new Option("- Please Select -",""); 
+        var x;
         for (var i = 1; i < options.length; i++) {
             var isToRemove = false;
             for (var k = 0; k < groupRemoval[medications[medName]].length; k++) {
@@ -149,7 +90,8 @@ foreach ($groupRemoval as $medGroup) {
             if (!isToRemove) {
                 medications2[medications2.length] = options[i].text;
                 option = list2.options[list2.options.length] = new Option(options[i].text,""); 
-                option.value = "" + getIndex(options[i].text) + "";
+                option.value = options[i].value;
+                x = option.value;
             }
         }
     }
@@ -167,7 +109,7 @@ foreach ($groupRemoval as $medGroup) {
                     <tr >
                         <td>
                             <?php
-                            echo $form->dropDownList($element, 'medication_1', $medications1, array('empty' =>
+                            echo $form->dropDownList($element, 'medication_1', $medications, array('empty' =>
                                 '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1\', \'ElementPrescribedMedication_medication_2\');'));
                             ?>
                         </td>
