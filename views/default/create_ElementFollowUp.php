@@ -19,6 +19,7 @@
 ?>
     <?php $locations = $element->getLocations(); ?>
   
+<h4 class="elementTypeName"><?php echo $element->elementType->name ?></h4>
 <div style=" float:center;" class="<?php echo $element->elementType->class_name ?>">
 
     <div class="eventDetail" style="">
