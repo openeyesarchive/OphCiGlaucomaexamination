@@ -17,7 +17,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-<div style="clear:both"></div>
+
 <?php $selectOptions = $element->getSelectOptions(); ?>
 
 <div class="<?php echo $element->elementType->class_name ?> ondemand<?php if (@$ondemand) { ?> hidden<?php } ?>">
@@ -35,7 +35,7 @@
 
 
         <div class="splitElement clearfix">
-            <div id="optic_disk_right" class="left" style="width:50%;">
+            <div class="left" style="width:50%;">
                 <?php
                 $this->widget('application.modules.eyedraw.OEEyeDrawWidgetOpticDisk', array(
                     'identifier' => 'OpticDiskRight',
@@ -49,7 +49,7 @@
                 ));
                 ?>
             </div>
-            <div id="optic_disk_left" class="right" style="width:50%;">
+            <div class="right" style="width:50%;">
                 <?php
                 $this->widget('application.modules.eyedraw.OEEyeDrawWidgetOpticDisk', array(
                     'identifier' => 'OpticDiskLeft',
