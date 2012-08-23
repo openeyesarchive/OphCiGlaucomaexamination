@@ -411,13 +411,6 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
             'default' => 1,
         ));
         $this->insert('element_type', array(
-            'name' => 'Prescribed Medication',
-            'class_name' => 'ElementPrescribedMedication',
-            'event_type_id' => $event_type['id'],
-            'display_order' => ++$order,
-            'default' => 1,
-        ));
-        $this->insert('element_type', array(
             'name' => 'Risks',
             'class_name' => 'ElementRisks',
             'event_type_id' => $event_type['id'],
@@ -469,6 +462,13 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
         $this->insert('element_type', array(
             'name' => 'Glaucoma Diagnosis',
             'class_name' => 'ElementGlaucomaDiagnosis',
+            'event_type_id' => $event_type['id'],
+            'display_order' => ++$order,
+            'default' => 1,
+        ));
+        $this->insert('element_type', array(
+            'name' => 'Prescribed Medication',
+            'class_name' => 'ElementPrescribedMedication',
             'event_type_id' => $event_type['id'],
             'display_order' => ++$order,
             'default' => 1,
