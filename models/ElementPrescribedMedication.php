@@ -133,7 +133,7 @@ class ElementPrescribedMedication extends BaseEventTypeElement {
             12 => 'Ganforte',
             13 => 'Xalcom',
             14 => 'Cosopt',
-            15 => 'PGAAzagra',
+            15 => 'PGA Azarga',
             16 => 'Combigan',
             17 => 'Diamox',
             18 => 'Diamox SR',
