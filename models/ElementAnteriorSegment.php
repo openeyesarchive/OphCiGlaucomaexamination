@@ -63,10 +63,9 @@ class ElementAnteriorSegment extends EyeDrawBase {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('id, event_id, description_left, description_right, image_string_left, image_string_right', 'safe'),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('id, event_id, description_left, description_right, image_string_left, image_string_right', 'safe', 'on' => 'search'),
+            array('id, event_id, cct_left, cct_right, description_left, description_right, image_string_left, image_string_right', 'safe'),
+            array('cct_left, cct_right', 'numerical', 'min' => 400, 'max' => 800),
+            array('id, event_id, cct_left, cct_right, description_left, description_right, image_string_left, image_string_right', 'safe', 'on' => 'search'),
         );
     }
 
@@ -89,6 +88,8 @@ class ElementAnteriorSegment extends EyeDrawBase {
             'event_id' => 'Event',
             'description_left' => 'Description (left)',
             'description_right' => 'Description (right)',
+            'cct_left' => 'CCT (left)',
+            'cct_right' => 'CCT (right)',
             'image_string_left' => 'EyeDraw (left)',
             'image_string_right' => 'EyeDraw (right)'
         );
@@ -108,6 +109,8 @@ class ElementAnteriorSegment extends EyeDrawBase {
         $criteria->compare('event_id', $this->event_id, true);
         $criteria->compare('description_left', $this->description_left, true);
         $criteria->compare('description_right', $this->description_right, true);
+        $criteria->compare('cct_left', $this->cct_left, true);
+        $criteria->compare('cct_right', $this->cct_right, true);
         $criteria->compare('image_string_left', $this->image_string_left, true);
         $criteria->compare('image_string_right', $this->image_string_right, true);
 

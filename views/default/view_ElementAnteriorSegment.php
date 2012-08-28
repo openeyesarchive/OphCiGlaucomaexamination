@@ -18,10 +18,44 @@
  */
 ?>
 <?php
+if ($element->cct_left || $element->cct_right) {
+    ?>
+    <h4><?php echo $element->elementType->name ?></h4>
+    <?php
+    $iop_right = "N/A";
+    if ($element->cct_right) {
+        $iop_right = $element->cct_right;
+    }
+    $iop_left = "N/A";
+    if ($element->cct_left) {
+        $iop_left = $element->cct_left;
+    }
+    ?>
+
+    <!-- Both eyes -->
+    <div align="center" style ="width: 100%; height: 114px; float:left;">
+        <table cellspacing="0" width="25%" height="40" style="border-top: 2px solid #444;">
+            <tbody>
+                <tr>
+                    <td width="25%" style="text-align: right; border-right: 1px solid #444;">
+                        <p style="text-align: right; margin-right: 20px;"><?php echo $iop_right ?></p>
+                    </td>
+                    <td align="left" width="25%" style="border-left: 1px solid #444;">
+                        <p style="margin-left: 16px;"><?php echo $iop_left ?></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <?php
+}
+?>
+
+<?php
 if ($element->isImageStringSet('right') || $element->isImageStringSet('left')) {
     ?>
-    <br />
-    <h4><?php echo $element->elementType->name ?></h4>
 
     <div class="splitElement clearfix">
         <table width="100%">

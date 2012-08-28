@@ -21,11 +21,25 @@
 <div class="<?php echo $element->elementType->class_name ?> ondemand<?php if (@$ondemand) { ?> hidden<?php } ?>">
 
     <h4 class="elementTypeName">
-        <a href="#" id="button1" onClick="toggleDivWithImages('<?php echo $element->elementType->class_name ?>', '<?php echo $element->elementType->class_name ?>_image','<?php echo $this->imgPath?>discloseSmallOpen16.gif', '<?php echo $this->imgPath?>discloseSmallClose16.gif'); return false;" class="<?php echo $element->elementType->class_name ?>_link" title="Click to reveal Fields to confrontation and enter data for it">
-            <img id="<?php echo $element->elementType->class_name ?>_image" src="<?php echo $this->imgPath?>discloseSmallOpen16.gif"/> Anterior Segment
+        <a href="#" id="button1" onClick="toggleDivWithImages('<?php echo $element->elementType->class_name ?>', '<?php echo $element->elementType->class_name ?>_image','<?php echo $this->imgPath ?>discloseSmallOpen16.gif', '<?php echo $this->imgPath ?>discloseSmallClose16.gif'); return false;" class="<?php echo $element->elementType->class_name ?>_link" title="Click to reveal Fields to confrontation and enter data for it">
+            <img id="<?php echo $element->elementType->class_name ?>_image" src="<?php echo $this->imgPath ?>discloseSmallOpen16.gif"/> Anterior Segment
         </a>
 
     </h4>
+
+
+    <div class="eventDetail">
+        <table>
+            <tr>
+                <td width="50%">
+                    <?php echo $form->textField($element, 'cct_right', array()); ?>
+                </td>
+                <td width="50%">
+                    <?php echo $form->textField($element, 'cct_left', array()); ?>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <div id="<?php echo $element->elementType->class_name ?>" class="<?php echo $element->elementType->class_name ?> ">
         <div class="splitElement clearfix">
@@ -68,7 +82,7 @@
                                 <input value="Add to Report" type="button"
                                        title="Extracts description and diagnosis from drawingEdit" 
                                        onclick="addToReport(ed_drawing_edit_AnteriorSegmentRight, 
-                                       ElementAnteriorSegment_description_right); return false;" >
+                                           ElementAnteriorSegment_description_right); return false;" >
                             </div>
                         </td>
                         <td>
@@ -91,16 +105,16 @@
                     <tr>
                         <td>
                             <div class="eventDetail">
-                            <input value="Add to Report" type="button"
-                                   title="Extracts description and diagnosis from drawingEdit" 
-                                   onclick="addToReport(ed_drawing_edit_AnteriorSegmentLeft, 
+                                <input value="Add to Report" type="button"
+                                       title="Extracts description and diagnosis from drawingEdit" 
+                                       onclick="addToReport(ed_drawing_edit_AnteriorSegmentLeft, 
                                        ElementAnteriorSegment_description_left); return false;" >
                             </div>
                         </td>
                         <td>
                             <div class="eventDetail">
-                            <input value="Reset" type="button" title="Clear drawing and start again"
-                                   onclick="resetEdit(ed_drawing_edit_AnteriorSegmentLeft,
+                                <input value="Reset" type="button" title="Clear drawing and start again"
+                                       onclick="resetEdit(ed_drawing_edit_AnteriorSegmentLeft,
                                        ElementAnteriorSegment_description_left); return false;" />
                             </div>
                         </td>
