@@ -138,12 +138,12 @@ class ElementFollowUp extends BaseEventTypeElement {
      * @return an array of strings dictating, in increasing order, the different
      * follow up dates for the follow up list.
      */
-    public function getFollow_up_list() {
+    public static function getFollow_up_list() {
 
         return array(
-            self::OPTION_1_52 => '1/4',
-            self::OPTION_2_52 => '2/4',
-            self::OPTION_3_52 => '3/4',
+            self::OPTION_1_52 => '1/52',
+            self::OPTION_2_52 => '2/52',
+            self::OPTION_3_52 => '3/52',
             self::OPTION_1_12 => '1/12',
             self::OPTION_2_12 => '2/12',
             self::OPTION_3_12 => '3/12',

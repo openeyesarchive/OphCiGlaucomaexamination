@@ -111,7 +111,7 @@ class ElementGlaucomaDiagnosis extends BaseEventTypeElement {
      *
      * @return array
      */
-    public function getDiagnosisOptions() {
+    public static function getDiagnosisOptions() {
 
         return array(
             self::Normal => 'Normal',
