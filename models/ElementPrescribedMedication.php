@@ -56,10 +56,10 @@ class ElementPrescribedMedication extends BaseEventTypeElement {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('medication_1, medication_2, medication_3, event_id', 'numerical', 'integerOnly' => true),
+            array('medication_1_left, medication_2_left, medication_3_left, medication_1_right, medication_2_right, medication_3_right, event_id', 'numerical', 'integerOnly' => true),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, event_id, medication_1, medication_2, medication_3', 'safe', 'on' => 'search'),
+            array('id, event_id, medication_1_left, medication_2_left, medication_3_left, medication_1_right, medication_2_right, medication_3_right', 'safe', 'on' => 'search'),
         );
     }
 
@@ -81,9 +81,12 @@ class ElementPrescribedMedication extends BaseEventTypeElement {
         return array(
             'id' => 'ID',
             'event_id' => 'Event',
-            'medication_1' => 'Medication 1',
-            'medication_2' => 'Medication 2',
-            'medication_3' => 'Medication 3',
+            'medication_1_left' => 'Medication 1',
+            'medication_2_left' => 'Medication 2',
+            'medication_3_left' => 'Medication 3',
+            'medication_1_right' => 'Medication 1',
+            'medication_2_right' => 'Medication 2',
+            'medication_3_right' => 'Medication 3',
         );
     }
 
@@ -99,9 +102,12 @@ class ElementPrescribedMedication extends BaseEventTypeElement {
 
         $criteria->compare('id', $this->id, true);
         $criteria->compare('event_id', $this->event_id, true);
-        $criteria->compare('medication_1', $this->medication_1);
-        $criteria->compare('medication_2', $this->medication_2);
-        $criteria->compare('medication_3', $this->medication_3);
+        $criteria->compare('medication_1_left', $this->medication_1_left);
+        $criteria->compare('medication_2_left', $this->medication_2_left);
+        $criteria->compare('medication_3_left', $this->medication_3_left);
+        $criteria->compare('medication_1_right', $this->medication_1_right);
+        $criteria->compare('medication_2_right', $this->medication_2_right);
+        $criteria->compare('medication_3_right', $this->medication_3_right);
 
         return new CActiveDataProvider(get_class($this), array(
                     'criteria' => $criteria,
