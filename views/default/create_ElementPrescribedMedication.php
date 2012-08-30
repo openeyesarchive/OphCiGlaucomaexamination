@@ -60,56 +60,56 @@ foreach ($groupRemoval as $medGroup => $conflictingGroups) {
 </script>
 
 <h4 class="elementTypeName"><?php echo $element->elementType->name ?></h4>
-<div class="eventDetail" style="text-align:center;">
 
-    <table cellpadding="0" cellspacing="0" height="40">
-        <tr >
-            <td align="left">
-                <?php
-                echo $form->dropDownList($element, 'medication_1_right', $medications, array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1_right\', \'ElementPrescribedMedication_medication_2_right\', \'ElementPrescribedMedication_medication_3_right\', groupRemoval, medications, medications2);'));
-                ?>
-            </td>
-            <td>
-                <?php
-                echo $form->dropDownList($element, 'medication_2_right', array(), array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_2_right\', \'ElementPrescribedMedication_medication_3_right\', null, groupRemoval, medications, medications2);'));
-                ?>
-            </td>
-            <td>
-                <?php
-                echo $form->dropDownList($element, 'medication_3_right', array(), array('empty' =>
-                    '- Please select -'));
-                ?>
-            </td>
-        </tr>
-    </table>
+<div class="eventDetail"> 
 
-</div><div class="eventDetail" style="text-align:center;">
+    <div class="eventDetail" style="width: 80%">
+ 
+        <div  style="float:left;">    
+            <?php
+            echo $form->dropDownList($element, 'medication_1_right', $medications, array('empty' =>
+                '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1_right\', \'ElementPrescribedMedication_medication_2_right\', \'ElementPrescribedMedication_medication_3_right\', groupRemoval, medications, medications2);'));
+            ?>
+        </div>
 
-    <table cellpadding="0" cellspacing="0" height="40">
-        <tr >
-            <td align="left">
-                <?php
-                echo $form->dropDownList($element, 'medication_1_left', $medications, array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1_left\', \'ElementPrescribedMedication_medication_2_left\', \'ElementPrescribedMedication_medication_3_left\', groupRemoval, medications, medications2);'));
-                ?>
-            </td>
-            <td>
-                <?php
-                echo $form->dropDownList($element, 'medication_2_left', array(), array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_2_left\', \'ElementPrescribedMedication_medication_3_left\', null, groupRemoval, medications, medications2);'));
-                ?>
-            </td>
-            <td>
-                <?php
-                echo $form->dropDownList($element, 'medication_3_left', array(), array('empty' =>
-                    '- Please select -'));
-                ?>
-            </td>
-        </tr>
-    </table>
+        <div  style="float:right;">    
+            <?php
+            echo $form->dropDownList($element, 'medication_1_left', $medications, array('empty' =>
+                '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1_left\', \'ElementPrescribedMedication_medication_2_left\', \'ElementPrescribedMedication_medication_3_left\', groupRemoval, medications, medications2);'));
+            ?>
+        </div>
 
+        <div class="eventDetail" style="float:left;">    
+            <?php
+            echo $form->dropDownList($element, 'medication_2_right', array(), array('empty' =>
+                '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_2_right\', \'ElementPrescribedMedication_medication_3_right\', null, groupRemoval, medications, medications2);'));
+            ?>
+        </div>
+
+        <div class="eventDetail" style="float:right;"> 
+            <?php
+            echo $form->dropDownList($element, 'medication_2_left', array(), array('empty' =>
+                '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_2_left\', \'ElementPrescribedMedication_medication_3_left\', null, groupRemoval, medications, medications2);'));
+            ?>  
+        </div>
+        <div style="clear:both"></div>
+
+        <div class="eventDetail" style="float:left;"> 
+
+            <?php
+            echo $form->dropDownList($element, 'medication_3_right', array(), array('empty' =>
+                '- Please select -'));
+            ?>
+        </div>
+        <div class="eventDetail" style="float:right;"> 
+
+            <?php
+            echo $form->dropDownList($element, 'medication_3_left', array(), array('empty' =>
+                '- Please select -'));
+            ?>
+        </div>
+    </div>
+    <div style="clear:both"></div>
 </div>
 
 <script type="text/javascript">

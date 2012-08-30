@@ -59,58 +59,60 @@ foreach ($diagnosisGroupRemoval as $medGroup => $conflictingGroups) {
 ?>
 </script>
 
-<h4 class="elementTypeName"><?php echo $element->elementType->name ?></h4>
-<div class="eventDetail" style="text-align:center;">
+<div style="clear: both"></div> 
+<h4 class="elementTypeName" style="clear:both;"><?php echo $element->elementType->name ?></h4>
 
-    <table cellpadding="0" cellspacing="0" height="40">
-        <tr >
-            <td align="left">
-                <?php
-                echo $form->dropDownList($element, 'diagnosis_1_right', $diagnoses, array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_1_right\', \'ElementGlaucomaDiagnosis_diagnosis_2_right\', \'ElementGlaucomaDiagnosis_diagnosis_3_right\', diagnosisGroupRemoval, diagnoses, diagnoses2);'));
-                ?>
-            </td>
-            <td>
-                <?php
-                echo $form->dropDownList($element, 'diagnosis_2_right', array(), array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_2_right\', \'ElementGlaucomaDiagnosis_diagnosis_3_right\', null, diagnosisGroupRemoval, diagnoses, diagnoses2);'));
-                ?>
-            </td>
-            <td>
-                <?php
-                echo $form->dropDownList($element, 'diagnosis_3_right', array(), array('empty' =>
-                    '- Please select -'));
-                ?>
-            </td>
-        </tr>
-    </table>
+<div class="eventDetail"> 
 
-</div><div class="eventDetail" style="text-align:center;">
+    <div class="eventDetail" style="width: 80%">
+ 
+        <div  style="float:left;">    
+            <?php
+            echo $form->dropDownList($element, 'diagnosis_1_right', $diagnoses, array('empty' =>
+                '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_1_right\', \'ElementGlaucomaDiagnosis_diagnosis_2_right\', \'ElementGlaucomaDiagnosis_diagnosis_3_right\', diagnosisGroupRemoval, diagnoses, diagnoses2);'));
+            ?>
+        </div>
 
-    <table cellpadding="0" cellspacing="0" height="40">
-        <tr >
-            <td align="left">
-                <?php
-                echo $form->dropDownList($element, 'diagnosis_1_left', $diagnoses, array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_1_left\', \'ElementGlaucomaDiagnosis_diagnosis_2_left\', \'ElementGlaucomaDiagnosis_diagnosis_3_left\', diagnosisGroupRemoval, diagnoses, diagnoses2);'));
-                ?>
-            </td>
-            <td>
-                <?php
-                echo $form->dropDownList($element, 'diagnosis_2_left', array(), array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_2_left\', \'ElementGlaucomaDiagnosis_diagnosis_3_left\', null, diagnosisGroupRemoval, diagnoses, diagnoses2);'));
-                ?>
-            </td>
-            <td>
-                <?php
-                echo $form->dropDownList($element, 'diagnosis_3_left', array(), array('empty' =>
-                    '- Please select -'));
-                ?>
-            </td>
-        </tr>
-    </table>
+        <div  style="float:right;">    
+            <?php
+            echo $form->dropDownList($element, 'diagnosis_1_left', $diagnoses, array('empty' =>
+                '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_1_left\', \'ElementGlaucomaDiagnosis_diagnosis_2_left\', \'ElementGlaucomaDiagnosis_diagnosis_3_left\', diagnosisGroupRemoval, diagnoses, diagnoses2);'));
+            ?>
+        </div>
 
+        <div class="eventDetail" style=" clear: both; float:left;">    
+            <?php
+            echo $form->dropDownList($element, 'diagnosis_2_right', array(), array('empty' =>
+                '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_2_right\', \'ElementGlaucomaDiagnosis_diagnosis_3_right\', null, diagnosisGroupRemoval, diagnoses, diagnoses2);'));
+            ?>
+        </div>
+
+        <div class="eventDetail" style="float:right;"> 
+            <?php
+            echo $form->dropDownList($element, 'diagnosis_2_left', array(), array('empty' =>
+                '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_2_left\', \'ElementGlaucomaDiagnosis_diagnosis_3_left\', null, diagnosisGroupRemoval, diagnoses, diagnoses2);'));
+            ?>  
+        </div>
+        <div style="clear:both"></div>
+
+        <div class="eventDetail" style="float:left;"> 
+
+            <?php
+            echo $form->dropDownList($element, 'diagnosis_3_right', array(), array('empty' =>
+                '- Please select -'));
+            ?>
+        </div>
+        <div class="eventDetail" style="float:right;"> 
+
+            <?php
+            echo $form->dropDownList($element, 'diagnosis_3_left', array(), array('empty' =>
+                '- Please select -'));
+            ?>
+        </div>
+    </div>
+    <div style="clear:both"></div>
 </div>
+
 
 <script type="text/javascript">
     // make the 2nd and 3rd selects hidden until they're used:
