@@ -22,26 +22,26 @@ if ($element->cct_left || $element->cct_right) {
     ?>
     <h4><?php echo $element->elementType->name ?></h4>
     <?php
-    $iop_right = "N/A";
+    $cct_right = "N/A";
     if ($element->cct_right) {
-        $iop_right = $element->cct_right;
+        $cct_right = $element->cct_right;
     }
-    $iop_left = "N/A";
+    $cct_left = "N/A";
     if ($element->cct_left) {
-        $iop_left = $element->cct_left;
+        $cct_left = $element->cct_left;
     }
     ?>
 
     <!-- Both eyes -->
-    <div align="center" style ="width: 100%; height: 114px; float:left;">
-        <table cellspacing="0" width="25%" height="40" style="border-top: 2px solid #444;">
+    <div class="eventDetail" align="center" style="width: 100%; height: 50px; float:left;">
+        <table cellspacing="0" width="25%" height="40" style="background-color: inherit; border-top: 2px solid #444;">
             <tbody>
                 <tr>
-                    <td width="25%" style="text-align: right; border-right: 1px solid #444;">
-                        <p style="text-align: right; margin-right: 20px;"><?php echo $iop_right ?></p>
+                    <td width="25%" style="background-color: inherit; text-align: right; border-right: 1px solid #444;">
+                        <p style="background-color: inherit; text-align: right; margin-right: 20px;"><?php echo $cct_right ?></p>
                     </td>
                     <td align="left" width="25%" style="border-left: 1px solid #444;">
-                        <p style="margin-left: 16px;"><?php echo $iop_left ?></p>
+                        <p style="background-color: inherit; margin-left: 16px;"><?php echo $cct_left ?></p>
                     </td>
                 </tr>
             </tbody>
@@ -57,7 +57,7 @@ if ($element->cct_left || $element->cct_right) {
 if ($element->isImageStringSet('right') || $element->isImageStringSet('left')) {
     ?>
 
-    <div class="splitElement clearfix">
+    <div class="eventDetail" style="clear: both">
         <table width="100%">
             <tr align="center">
                 <td align="left">

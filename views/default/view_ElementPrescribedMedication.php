@@ -17,48 +17,52 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
+
 <?php
-if ($element->medication_1_right) {
+if ($element->medication_1_left || $element->medication_1_right) {
     ?>
     <h4><?php echo $element->elementType->name ?></h4>
-    <div class="eventHighlight" align="left" style ="width: 100%; height: 50px; float:left;">
-        <h4>
-            <div class="eventHighlight">
-                <?php
-                $medications = $element->getMedications();
-                echo $medications[$element->medication_1_right];
-                if ($element->medication_2_right) {
-                    echo ", " . $medications[$element->medication_2_right];
-                    if ($element->medication_3_right) {
-                        echo ", " . $medications[$element->medication_3_right];
-                    }
-                }
-                ?>
-            </div>
-        </h4>
-    </div>
-
     <?php
-}if ($element->medication_1_left) {
-    ?>
-    <h4><?php echo $element->elementType->name ?></h4>
-    <div class="eventHighlight" align="left" style ="width: 100%; height: 50px; float:left;">
-        <h4>
-            <div class="eventHighlight">
-                <?php
-                $medications = $element->getMedications();
-                echo $medications[$element->medication_1_left];
-                if ($element->medication_2_left) {
-                    echo ", " . $medications[$element->medication_2_left];
-                    if ($element->medication_3_left) {
-                        echo ", " . $medications[$element->medication_3_left];
+    if ($element->medication_1_right) {
+        ?>
+        <div class="eventHighlight" align="left" style ="width: 50%; height: 50px; float:left;">
+            <h4>
+                <div class="eventHighlight">
+                    <?php
+                    $medications = $element->getMedications();
+                    echo $medications[$element->medication_1_right];
+                    if ($element->medication_2_right) {
+                        echo ", " . $medications[$element->medication_2_right];
+                        if ($element->medication_3_right) {
+                            echo ", " . $medications[$element->medication_3_right];
+                        }
                     }
-                }
-                ?>
-            </div>
-        </h4>
-    </div>
+                    ?>
+                </div>
+            </h4>
+        </div>
 
-    <?php
+        <?php
+    }if ($element->medication_1_left) {
+        ?>
+        <div class="eventHighlight" align="left" style ="width: 50%; height: 50px; float:left;">
+            <h4>
+                <div class="eventHighlight">
+                    <?php
+                    $medications = $element->getMedications();
+                    echo $medications[$element->medication_1_left];
+                    if ($element->medication_2_left) {
+                        echo ", " . $medications[$element->medication_2_left];
+                        if ($element->medication_3_left) {
+                            echo ", " . $medications[$element->medication_3_left];
+                        }
+                    }
+                    ?>
+                </div>
+            </h4>
+        </div>
+
+        <?php
+    }
 }
 ?>

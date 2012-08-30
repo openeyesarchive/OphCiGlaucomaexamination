@@ -27,7 +27,7 @@
         </a>
 
     </h4>
-    <div id="<?php echo $element->elementType->class_name ?>" style="display:none" class="<?php echo $element->elementType->class_name ?> ">
+    <div id="<?php echo $element->elementType->class_name ?>" style="display:none" class="eventDetail">
 
         <div class="splitElement clearfix">
             <div class="left" style="width:50%;">

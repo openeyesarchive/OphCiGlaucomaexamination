@@ -265,7 +265,7 @@ if (ElementFollowUp::model()->isFollowUp($this->patient->id) == true) {
         </a>
 
     </h4>
-    <div id="<?php echo $element->elementType->class_name ?>" class="<?php echo $element->elementType->class_name ?> ">
+    <div id="<?php echo $element->elementType->class_name ?>" class="eventDetail">
         <div class="splitElement clearfix">
 
             <!-- Settings section -->

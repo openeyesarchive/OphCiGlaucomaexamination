@@ -18,47 +18,52 @@
  */
 ?>
 <?php
-if ($element->diagnosis_1_right) {
+if ($element->diagnosis_1_left || $element->diagnosis_1_right) {
     ?>
     <h4><?php echo $element->elementType->name ?></h4>
-    <div class="eventHighlight" align="left" style ="width: 100%; height: 50px; float:left;">
-        <h4>
-            <div class="eventHighlight">
-                <?php
-                $diagnoses = $element->getDiagnoses();
-                echo $diagnoses[$element->diagnosis_1_right];
-                if ($element->diagnosis_2_right) {
-                    echo ", " . $diagnoses[$element->diagnosis_2_right];
-                    if ($element->diagnosis_3_right) {
-                        echo ", " . $diagnoses[$element->diagnosis_3_right];
-                    }
-                }
-                ?>
-            </div>
-        </h4>
-    </div>
-
+    
     <?php
-}if ($element->diagnosis_1_left) {
-    ?>
-    <h4><?php echo $element->elementType->name ?></h4>
-    <div class="eventHighlight" align="left" style ="width: 100%; height: 50px; float:left;">
-        <h4>
-            <div class="eventHighlight">
-                <?php
-                $diagnoses = $element->getDiagnoses();
-                echo $diagnoses[$element->diagnosis_1_left];
-                if ($element->diagnosis_2_left) {
-                    echo ", " . $diagnoses[$element->diagnosis_2_left];
-                    if ($element->diagnosis_3_left) {
-                        echo ", " . $diagnoses[$element->diagnosis_3_left];
+    if ($element->diagnosis_1_right) {
+        ?>
+        
+        <div class="eventHighlight" align="left" style ="width: 50%; height: 50px; float:left;">
+            <h4>
+                <div class="eventHighlight">
+                    <?php
+                    $diagnoses = $element->getDiagnoses();
+                    echo $diagnoses[$element->diagnosis_1_right];
+                    if ($element->diagnosis_2_right) {
+                        echo ", " . $diagnoses[$element->diagnosis_2_right];
+                        if ($element->diagnosis_3_right) {
+                            echo ", " . $diagnoses[$element->diagnosis_3_right];
+                        }
                     }
-                }
-                ?>
-            </div>
-        </h4>
-    </div>
+                    ?>
+                </div>
+            </h4>
+        </div>
 
-    <?php
+        <?php
+    }if ($element->diagnosis_1_left) {
+        ?>
+        <div class="eventHighlight" align="left" style ="width: 50%; height: 50px; float:left;">
+            <h4>
+                <div class="eventHighlight">
+                    <?php
+                    $diagnoses = $element->getDiagnoses();
+                    echo $diagnoses[$element->diagnosis_1_left];
+                    if ($element->diagnosis_2_left) {
+                        echo ", " . $diagnoses[$element->diagnosis_2_left];
+                        if ($element->diagnosis_3_left) {
+                            echo ", " . $diagnoses[$element->diagnosis_3_left];
+                        }
+                    }
+                    ?>
+                </div>
+            </h4>
+        </div>
+
+        <?php
+    }
 }
 ?>

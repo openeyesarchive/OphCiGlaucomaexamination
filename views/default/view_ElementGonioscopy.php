@@ -26,7 +26,7 @@ if ($element->isImageStringSet('right') || $element->isImageStringSet('left')) {
 
 
 
-    <div class="splitElement clearfix">
+    <div class="eventDetail">
         <table width="100%">
             <tr align="center">
                 <td align="left">

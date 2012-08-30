@@ -31,7 +31,7 @@
 
     </h4>
 
-    <div id="<?php echo $element->elementType->class_name ?>" class="<?php echo $element->elementType->class_name ?>">
+    <div id="<?php echo $element->elementType->class_name ?>" class="eventDetail">
 
 
         <div class="splitElement clearfix">

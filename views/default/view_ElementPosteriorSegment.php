@@ -22,7 +22,7 @@ if ($element->isImageStringSet('right') || $element->isImageStringSet('left')) {
   ?>
   <br />
   <h4><?php echo $element->elementType->name ?></h4>
-  <div class="splitElement clearfix">
+  <div class="eventDetail">
         <table width="100%">
             <tr align="center">
                 <td align="left">

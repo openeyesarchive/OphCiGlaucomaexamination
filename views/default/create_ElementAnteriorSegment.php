@@ -27,8 +27,8 @@
 
     </h4>
 
-
-    <div class="eventDetail">
+    <div id="<?php echo $element->elementType->class_name ?>" class="eventDetail">
+        
         <table>
             <tr>
                 <td width="50%">
@@ -39,10 +39,7 @@
                 </td>
             </tr>
         </table>
-    </div>
-
-    <div id="<?php echo $element->elementType->class_name ?>" class="<?php echo $element->elementType->class_name ?> ">
-        <div class="splitElement clearfix">
+        <div class="splitElement clearfix" style="background-color: inherit; color: inherit">
             <div class="left" style="width:50%;">
                 <?php
                 $this->widget('application.modules.eyedraw.OEEyeDrawWidgetAnteriorSegment', array(
