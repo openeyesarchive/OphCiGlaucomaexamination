@@ -24,8 +24,8 @@
  * The followings are the available columns in table 'element_intraocular_pressure':
  * @property string $id
  * @property string $event_id
- * @property integer $diagnosis_right
- * @property integer $diagnosis_left
+ * @property integer $diagnosis_1_right
+ * @property integer $diagnosis_1_left
  */
 class ElementGlaucomaDiagnosis extends BaseEventTypeElement {
     const Normal = 1;
@@ -56,10 +56,10 @@ class ElementGlaucomaDiagnosis extends BaseEventTypeElement {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('diagnosis_right, diagnosis_left, event_id', 'numerical', 'integerOnly' => true),
+            array('diagnosis_1_right, diagnosis_2_right, diagnosis_3_right, diagnosis_1_left, diagnosis_2_left, diagnosis_3_left, event_id', 'numerical', 'integerOnly' => true),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, event_id, diagnosis_right, diagnosis_left', 'safe', 'on' => 'search'),
+            array('id, event_id, diagnosis_1_right, diagnosis_2_right, diagnosis_3_right, diagnosis_1_left, diagnosis_2_left, diagnosis_3_left', 'safe', 'on' => 'search'),
         );
     }
 
@@ -81,8 +81,12 @@ class ElementGlaucomaDiagnosis extends BaseEventTypeElement {
         return array(
             'id' => 'ID',
             'event_id' => 'Event',
-            'diagnosis_right' => 'Diagnosis',
-            'diagnosis_left' => 'Diagnosis',
+            'diagnosis_1_right' => 'Diagnosis 1',
+            'diagnosis_1_left' => 'Diagnosis 1',
+            'diagnosis_2_right' => 'Diagnosis 2',
+            'diagnosis_2_left' => 'Diagnosis 2',
+            'diagnosis_3_right' => 'Diagnosis 3',
+            'diagnosis_3_left' => 'Diagnosis 3',
         );
     }
 
@@ -98,8 +102,12 @@ class ElementGlaucomaDiagnosis extends BaseEventTypeElement {
 
         $criteria->compare('id', $this->id, true);
         $criteria->compare('event_id', $this->event_id, true);
-        $criteria->compare('diagnosis_left', $this->diagnosis_left);
-        $criteria->compare('diagnosis_right', $this->diagnosis_right);
+        $criteria->compare('diagnosis_1_left', $this->diagnosis_1_left);
+        $criteria->compare('diagnosis_1_right', $this->diagnosis_1_right);
+        $criteria->compare('diagnosis_2_left', $this->diagnosis_2_left);
+        $criteria->compare('diagnosis_2_right', $this->diagnosis_2_right);
+        $criteria->compare('diagnosis_3_left', $this->diagnosis_3_left);
+        $criteria->compare('diagnosis_3_right', $this->diagnosis_3_right);
 
         return new CActiveDataProvider(get_class($this), array(
                     'criteria' => $criteria,
@@ -107,9 +115,11 @@ class ElementGlaucomaDiagnosis extends BaseEventTypeElement {
     }
     
     /**
-     * Returns an array of all the instrument options
+     * Returns an array of all the diagnoses options.
      *
-     * @return array
+     * @deprecated no longer used; use {@link getDiagnoses()} instead.
+     * 
+     * @return an associateive array of int(index) => string(diagnosis).
      */
     public static function getDiagnosisOptions() {
 
@@ -121,6 +131,78 @@ class ElementGlaucomaDiagnosis extends BaseEventTypeElement {
             self::NAG => 'NAG',
             self::ACG => 'ACG',
         );
+    }
+    
+    /**
+     * Gets the list of glaucoma diagnoses.
+     * 
+     * Ideally this will all be re-factored in to the database at some point.
+     * 
+     * @return array of medications, indexed alphabetically as an associative
+     * array of int(index) => string(diagnosis) values.
+     */
+    function getDiagnoses() {
+        return array(
+            1 => 'G Suspect',
+            2 => 'OAG',
+            3 => 'NTG',
+            4 => 'PXF',
+            5 => 'PDS',
+            6 => 'PDS-G',
+            7 => 'ACG',
+            8 => 'CNAG',
+            9 => 'OHT',
+            10 => 'Normal',
+            11 => 'Cataract',
+            12 => 'AMD: wet',
+            13 => 'AMD: dry'
+        );
+    }
+    
+    /**
+     * Gets the list of glaucoma medications mapped to medication groups.
+     * 
+     * Ideally this will all be re-factored in to the database at some point.
+     * 
+     * @return array of medications and groups, indexed alphabetically as
+     * an associative array of string(medication) => string(medicationGroup)
+     * values.
+     */
+    function getDiagnosisGroups() {
+        return array(
+            'G Suspect' => 'dOAG',
+            'OAG' => 'dOAG',
+            'NTG' => 'dOAG',
+            'PXF' => 'dOAG',
+            'PDS' => 'dOAG',
+            'PDS-G' => 'dOAG',
+            'ACG' => 'dACG',
+            'CNAG' => 'dACG',
+            'OHT' => 'dOHT',
+            'Normal' => 'dNorm',
+            'Cataract' => 'dCAT',
+            'AMD: wet' => 'dAMD',
+            'AMD: dry' => 'dAMD'
+        );
+    }
+    
+    /**
+     * Gets the list of glaucoma medication groups mapped to an array of groups
+     * that the group is not compatible with.
+     * 
+     * Ideally this will all be re-factored in to the database at some point.
+     * 
+     * @return array of medication groups, as an associative
+     * array of string(medicationGroup) => array(groups) values.
+     */
+    function getConflictingGroups() {
+        return array(
+            'dOAG' => array('dOAG', 'dOHT', 'dACG', 'dNorm'),
+            'dOHT' => array('dOHT', 'dOAG', 'dACG', 'dNorm'),
+            'dCAT' => array('dCAT'),
+            'dAMD' => array('dAMD'),
+            'dACG' => array('dOAG', 'dOHT', 'dACG', 'dNorm'),
+            'dNorm' => array('dNorm', 'dOAG', 'dOHT', 'dACG', 'dCAT', 'dAMD'));
     }
 
 }

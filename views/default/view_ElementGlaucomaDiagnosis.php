@@ -17,33 +17,48 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-<div>
+<?php
+if ($element->diagnosis_1_right) {
+    ?>
+    <h4><?php echo $element->elementType->name ?></h4>
+    <div class="eventHighlight" align="left" style ="width: 100%; height: 50px; float:left;">
+        <h4>
+            <div class="eventHighlight">
+                <?php
+                $diagnoses = $element->getDiagnoses();
+                echo $diagnoses[$element->diagnosis_1_right];
+                if ($element->diagnosis_2_right) {
+                    echo ", " . $diagnoses[$element->diagnosis_2_right];
+                    if ($element->diagnosis_3_right) {
+                        echo ", " . $diagnoses[$element->diagnosis_3_right];
+                    }
+                }
+                ?>
+            </div>
+        </h4>
+    </div>
+
     <?php
-    $diagnosis_left = "Not recorded";
-    $diagnosis_right = "Not recorded";
-    if ($element->diagnosis_right || $element->diagnosis_left) {
-        ?>
-        <h4><?php echo $element->elementType->name ?></h4>
-        <?php
-        $options = $element->getDiagnosisOptions();
-        if ($element->diagnosis_right) {
-            $diagnosis_right = $element->diagnosis_right;
+}if ($element->diagnosis_1_left) {
+    ?>
+    <h4><?php echo $element->elementType->name ?></h4>
+    <div class="eventHighlight" align="left" style ="width: 100%; height: 50px; float:left;">
+        <h4>
+            <div class="eventHighlight">
+                <?php
+                $diagnoses = $element->getDiagnoses();
+                echo $diagnoses[$element->diagnosis_1_left];
+                if ($element->diagnosis_2_left) {
+                    echo ", " . $diagnoses[$element->diagnosis_2_left];
+                    if ($element->diagnosis_3_left) {
+                        echo ", " . $diagnoses[$element->diagnosis_3_left];
+                    }
+                }
+                ?>
+            </div>
+        </h4>
+    </div>
 
-            $diagnosis_right = $options[$element->diagnosis_right];
-        }
-        if ($element->diagnosis_left) {
-            $diagnosis_left = $element->diagnosis_left;
-            $diagnosis_left = $options[$element->diagnosis_left];
-        }
-        ?>
-
-        <div align="left" style ="width: 50%; float:left;">
-            <p style="text-align: center; margin-right: 20px;"><?php echo $diagnosis_right ?></p>
-        </div>
-        <div align="right" style ="width: 50%; float:left;">
-            <p style="text-align: center; margin-right: 20px;"><?php echo $diagnosis_left ?></p>
-        </div>
-        <div style="clear:both"></div>
-        <?php
-    }
-    ?></div>
+    <?php
+}
+?>

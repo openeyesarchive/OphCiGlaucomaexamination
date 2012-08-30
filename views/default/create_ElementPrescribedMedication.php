@@ -57,44 +57,6 @@ foreach ($groupRemoval as $medGroup => $conflictingGroups) {
     }
 }
 ?>
-    
-    /**
-     * Populate the second list according to the values held in the first
-     * list.
-     *
-     * medList1 the first list of medications to examine; this will not
-     * be changed, and will be used to influence the values in the
-     * second list.
-     * 
-     * medList2 the second list that will be influenced by the contents
-     * of the first list.
-     */
-    function populateList(medList1, medList2) {
-        document.getElementById('div_' + medList2).style.display = "inline";
-        var list1 = document.getElementById(medList1);
-        var list2 = document.getElementById(medList2);
-        var index = list1.selectedIndex;
-        // get the name of the currently selected medication:
-        var medName = list1.options[index].text;
-        var options = list1.options;
-        list2.options.length = 0;
-        option = list2.options[list2.options.length] = new Option("- Please Select -","");
-        for (var i = 1; i < options.length; i++) {
-            var isToRemove = false;
-            for (var k = 0; k < groupRemoval[medications[medName]].length; k++) {
-                if (medications[options[i].text] == groupRemoval[medications[medName]][k]) {
-                    isToRemove = true;
-                    break;
-                }
-            }
-            if (!isToRemove) {
-                medications2[medications2.length] = options[i].text;
-                option = list2.options[list2.options.length] = new Option(options[i].text,""); 
-                option.value = options[i].value;
-            }
-        }
-    }
-    
 </script>
 
 <h4 class="elementTypeName"><?php echo $element->elementType->name ?></h4>
@@ -105,13 +67,13 @@ foreach ($groupRemoval as $medGroup => $conflictingGroups) {
             <td align="left">
                 <?php
                 echo $form->dropDownList($element, 'medication_1_right', $medications, array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1_right\', \'ElementPrescribedMedication_medication_2_right\');'));
+                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1_right\', \'ElementPrescribedMedication_medication_2_right\', \'ElementPrescribedMedication_medication_3_right\', groupRemoval, medications, medications2);'));
                 ?>
             </td>
             <td>
                 <?php
                 echo $form->dropDownList($element, 'medication_2_right', array(), array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_2_right\', \'ElementPrescribedMedication_medication_3_right\');'));
+                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_2_right\', \'ElementPrescribedMedication_medication_3_right\', null, groupRemoval, medications, medications2);'));
                 ?>
             </td>
             <td>
@@ -130,13 +92,13 @@ foreach ($groupRemoval as $medGroup => $conflictingGroups) {
             <td align="left">
                 <?php
                 echo $form->dropDownList($element, 'medication_1_left', $medications, array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1_left\', \'ElementPrescribedMedication_medication_2_left\');'));
+                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_1_left\', \'ElementPrescribedMedication_medication_2_left\', \'ElementPrescribedMedication_medication_3_left\', groupRemoval, medications, medications2);'));
                 ?>
             </td>
             <td>
                 <?php
                 echo $form->dropDownList($element, 'medication_2_left', array(), array('empty' =>
-                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_2_left\', \'ElementPrescribedMedication_medication_3_left\');'));
+                    '- Please select -', 'onChange' => 'populateList(\'ElementPrescribedMedication_medication_2_left\', \'ElementPrescribedMedication_medication_3_left\', null, groupRemoval, medications, medications2);'));
                 ?>
             </td>
             <td>
@@ -151,6 +113,7 @@ foreach ($groupRemoval as $medGroup => $conflictingGroups) {
 </div>
 
 <script type="text/javascript">
+    // make the 2nd and 3rd selects hidden until they're used:
     document.getElementById("div_ElementPrescribedMedication_medication_2_right").style.display = "none";
     document.getElementById("div_ElementPrescribedMedication_medication_3_right").style.display = "none";
     document.getElementById("div_ElementPrescribedMedication_medication_2_left").style.display = "none";
