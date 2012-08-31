@@ -1,6 +1,5 @@
 <?php
 
-
 class DbHelper extends CDbMigration {
     /**
      * Gets the table name along with the specified non-null suffix.

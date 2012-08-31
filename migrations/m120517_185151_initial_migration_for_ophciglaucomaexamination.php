@@ -1,6 +1,6 @@
 <?php
 
-include 'DbHelper.php';
+require_once 'DbHelper.php';
 
 class m120517_185151_initial_migration_for_ophciglaucomaexamination
     extends DBHelper {
@@ -482,7 +482,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
     /**
      * Create all tables. Insert necessary data. 
      */
-    public function up() {
+    public function safeUp() {
         $group = $this->dbConnection->createCommand()
                 ->select('id')
                 ->from('event_group')
@@ -508,7 +508,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
     /**
      * Deletes all data and drops all tables. 
      */
-    public function down() {
+    public function safeDown() {
         // Find the event type
         $event_type = $this->dbConnection->createCommand()
                 ->select('id')
