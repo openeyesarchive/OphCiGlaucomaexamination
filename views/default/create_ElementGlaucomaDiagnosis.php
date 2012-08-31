@@ -65,51 +65,50 @@ foreach ($diagnosisGroupRemoval as $medGroup => $conflictingGroups) {
 <div class="eventDetail"> 
 
     <div class="eventDetail" style="width: 80%">
- 
-        <div  style="float:left;">    
-            <?php
-            echo $form->dropDownList($element, 'diagnosis_1_right', $diagnoses, array('empty' =>
-                '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_1_right\', \'ElementGlaucomaDiagnosis_diagnosis_2_right\', \'ElementGlaucomaDiagnosis_diagnosis_3_right\', diagnosisGroupRemoval, diagnoses, diagnoses2);'));
-            ?>
-        </div>
+            <div  style="float:left;">    
+                <?php
+                echo $form->dropDownList($element, 'diagnosis_1_right', $diagnoses, array('empty' =>
+                    '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_1_right\', \'ElementGlaucomaDiagnosis_diagnosis_2_right\', \'ElementGlaucomaDiagnosis_diagnosis_3_right\', diagnosisGroupRemoval, diagnoses, diagnoses2);'));
+                ?>
+            </div>
 
-        <div  style="float:right;">    
-            <?php
-            echo $form->dropDownList($element, 'diagnosis_1_left', $diagnoses, array('empty' =>
-                '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_1_left\', \'ElementGlaucomaDiagnosis_diagnosis_2_left\', \'ElementGlaucomaDiagnosis_diagnosis_3_left\', diagnosisGroupRemoval, diagnoses, diagnoses2);'));
-            ?>
-        </div>
+            <div class="eventDetail" style="float:right;">    
+                <?php
+                echo $form->dropDownList($element, 'diagnosis_1_left', $diagnoses, array('empty' =>
+                    '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_1_left\', \'ElementGlaucomaDiagnosis_diagnosis_2_left\', \'ElementGlaucomaDiagnosis_diagnosis_3_left\', diagnosisGroupRemoval, diagnoses, diagnoses2);'));
+                ?>
+            </div>
 
-        <div class="eventDetail" style=" clear: both; float:left;">    
-            <?php
-            echo $form->dropDownList($element, 'diagnosis_2_right', array(), array('empty' =>
-                '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_2_right\', \'ElementGlaucomaDiagnosis_diagnosis_3_right\', null, diagnosisGroupRemoval, diagnoses, diagnoses2);'));
-            ?>
-        </div>
+            <div class="eventDetail" style=" clear: both; float:left;">    
+                <?php
+                echo $form->dropDownList($element, 'diagnosis_2_right', array(), array('empty' =>
+                    '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_2_right\', \'ElementGlaucomaDiagnosis_diagnosis_3_right\', null, diagnosisGroupRemoval, diagnoses, diagnoses2);'));
+                ?>
+            </div>
 
-        <div class="eventDetail" style="float:right;"> 
-            <?php
-            echo $form->dropDownList($element, 'diagnosis_2_left', array(), array('empty' =>
-                '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_2_left\', \'ElementGlaucomaDiagnosis_diagnosis_3_left\', null, diagnosisGroupRemoval, diagnoses, diagnoses2);'));
-            ?>  
-        </div>
-        <div style="clear:both"></div>
+            <div class="eventDetail" style="float:right;"> 
+                <?php
+                echo $form->dropDownList($element, 'diagnosis_2_left', array(), array('empty' =>
+                    '- Please select -', 'onChange' => 'populateList(\'ElementGlaucomaDiagnosis_diagnosis_2_left\', \'ElementGlaucomaDiagnosis_diagnosis_3_left\', null, diagnosisGroupRemoval, diagnoses, diagnoses2);'));
+                ?>  
+            </div>
+            <div style="clear:both"></div>
 
-        <div class="eventDetail" style="float:left;"> 
+            <div class="eventDetail" style="float:left;"> 
 
-            <?php
-            echo $form->dropDownList($element, 'diagnosis_3_right', array(), array('empty' =>
-                '- Please select -'));
-            ?>
-        </div>
-        <div class="eventDetail" style="float:right;"> 
+                <?php
+                echo $form->dropDownList($element, 'diagnosis_3_right', array(), array('empty' =>
+                    '- Please select -'));
+                ?>
+            </div>
+            <div class="eventDetail" style="float:right;"> 
 
-            <?php
-            echo $form->dropDownList($element, 'diagnosis_3_left', array(), array('empty' =>
-                '- Please select -'));
-            ?>
+                <?php
+                echo $form->dropDownList($element, 'diagnosis_3_left', array(), array('empty' =>
+                    '- Please select -'));
+                ?>
+            </div>
         </div>
-    </div>
     <div style="clear:both"></div>
 </div>
 
