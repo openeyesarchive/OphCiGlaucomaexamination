@@ -24,13 +24,8 @@ if ($element->follow_up) {
     <h4><?php echo $element->elementType->name ?></h4>
     <?php
     $followUpData = $element->getFollow_up_list();
-    if ($element->location == 0) {
-        $location = 'UHW';
-    } else if ($element->location == 1) {
-        $location = 'St. David\'s';
-    } else {
-        $location = 'Optometrist';
-    }
+    $locations = $element->getLocations();
+    $location = $locations[$element->location];
     ?>
 
     <div align="left" style ="width: 50%; float:left;">
