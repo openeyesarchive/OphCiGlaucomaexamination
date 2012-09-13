@@ -22,8 +22,8 @@
 <div class="ElementPosteriorSegment ondemand">
 
     <h4 class="elementTypeName">
-        <a href="#" id="button1" onClick="toggleDivWithImages('<?php echo $element->elementType->class_name ?>', '<?php echo $element->elementType->class_name ?>_image','<?php echo $this->imgPath?>discloseSmallOpen16.gif', '<?php echo $this->imgPath?>discloseSmallClose16.gif'); return false;" class="<?php echo $element->elementType->class_name ?>_link" title="Click to reveal Fields to confrontation and enter data for it">
-            <img id="<?php echo $element->elementType->class_name ?>_image" src="<?php echo $this->imgPath?>discloseSmallClose16.gif"/> Posterior Segment
+        <a href="#" id="button1" onClick="toggleDivWithImages('<?php echo $element->elementType->class_name ?>', '<?php echo $element->elementType->class_name ?>_image','<?php echo $this->assetPath?>/img/discloseSmallOpen16.gif', '<?php echo $this->assetPath?>/img/discloseSmallClose16.gif'); return false;" class="<?php echo $element->elementType->class_name ?>_link" title="Click to reveal Fields to confrontation and enter data for it">
+            <img id="<?php echo $element->elementType->class_name ?>_image" src="<?php echo $this->assetPath?>/img/discloseSmallClose16.gif"/> Posterior Segment
         </a>
 
     </h4>
@@ -32,7 +32,7 @@
         <div class="splitElement clearfix">
             <div class="left" style="width:50%;">
                 <?php
-                $this->widget('application.modules.eyedraw.OEEyeDrawWidgetPosteriorSegment', array(
+                $this->widget('application.modules.eyedraw.OEEyeDrawWidgetPosteriorSegmentGlaucoma', array(
                     'identifier' => 'PosteriorSegmentRight',
                     'side' => 'R',
                     'mode' => 'edit',
@@ -46,7 +46,7 @@
             </div>
             <div class="right" style="width:50%;">
                 <?php
-                $this->widget('application.modules.eyedraw.OEEyeDrawWidgetPosteriorSegment', array(
+                $this->widget('application.modules.eyedraw.OEEyeDrawWidgetPosteriorSegmentGlaucoma', array(
                     'identifier' => 'PosteriorSegmentLeft',
                     'side' => 'L',
                     'mode' => 'edit',

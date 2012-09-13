@@ -260,8 +260,8 @@ if (ElementFollowUp::model()->isFollowUp($this->patient->id) == true) {
 <div class="<?php echo $element->elementType->class_name ?> ondemand<?php if (@$ondemand) { ?> hidden<?php } ?>">
 
     <h4 class="elementTypeName">
-        <a href="#" id="button1" onClick="toggleDivWithImages('<?php echo $element->elementType->class_name ?>', '<?php echo $element->elementType->class_name ?>_image','<?php echo $this->imgPath?>discloseSmallOpen16.gif', '<?php echo $this->imgPath?>discloseSmallClose16.gif'); return false;" class="<?php echo $element->elementType->class_name ?>_link" title="Click to reveal Fields to confrontation and enter data for it">
-            <img id="<?php echo $element->elementType->class_name ?>_image" src="<?php echo $this->imgPath?>discloseSmallOpen16.gif"/> Gonioscopy
+        <a href="#" id="button1" onClick="toggleDivWithImages('<?php echo $element->elementType->class_name ?>', '<?php echo $element->elementType->class_name ?>_image','<?php echo $this->assetPath?>/img/discloseSmallOpen16.gif', '<?php echo $this->assetPath?>/img/discloseSmallClose16.gif'); return false;" class="<?php echo $element->elementType->class_name ?>_link" title="Click to reveal Fields to confrontation and enter data for it">
+            <img id="<?php echo $element->elementType->class_name ?>_image" src="<?php echo $this->assetPath?>/img/discloseSmallOpen16.gif"/> Gonioscopy
         </a>
 
     </h4>
@@ -355,7 +355,7 @@ if (ElementFollowUp::model()->isFollowUp($this->patient->id) == true) {
                         <a href="javascript:void(0);" title="Br J Ophthalmol 2000;84:186–192" onClick="showPop('vanHerickPNGLeft');">Foster images</a>
                     </div>
                     <div style="display:none; z-index:100; position:absolute" id='vanHerickPNGLeft' class="popup" title="Click an area of image to select result">
-                        <img usemap="#pickmapL" width=450 src="<?php echo $this->imgPath ?>gonioscopy.png">
+                        <img usemap="#pickmapL" width=450 src="<?php echo $this->assetPath?>/img/gonioscopy.png">
                         <map name="pickmapL">
                             <area style="cursor:pointer" shape="rect" coords="0,0,225,225" onclick="popupSelect(5, 'ElementGonioscopy_van_herick_left', 'vanHerickPNGLeft');" />
                             <area style="cursor:pointer" shape="rect" coords="0,225,225,450" onclick="popupSelect(15, 'ElementGonioscopy_van_herick_left', 'vanHerickPNGLeft');" />
@@ -371,7 +371,7 @@ if (ElementFollowUp::model()->isFollowUp($this->patient->id) == true) {
                         <a href="javascript:void(0);" title="Br J Ophthalmol 2000;84:186–192" onClick="showPop('vanHerickPNGRight');">Foster images</a>
                     </div>
                     <span style="display:none; z-index:100; position:absolute" id='vanHerickPNGRight' class="popup" title="Click an area of image to select result">
-                        <img usemap="#pickmapR" width=450 src="<?php echo $this->imgPath ?>gonioscopy.png">
+                        <img usemap="#pickmapR" width=450 src="<?php echo $this->assetPath?>/img/gonioscopy.png">
                         <map name="pickmapR">
                             <area style="cursor:pointer" shape="rect" coords="0,0,225,225" onclick="popupSelect(5, 'ElementGonioscopy_van_herick_right', 'vanHerickPNGRight');" />
                             <area style="cursor:pointer" shape="rect" coords="0,225,225,450" onclick="popupSelect(15, 'ElementGonioscopy_van_herick_right', 'vanHerickPNGRight');" />

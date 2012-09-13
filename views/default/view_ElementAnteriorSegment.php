@@ -70,7 +70,7 @@ if ($element->isImageStringSet('right') || $element->isImageStringSet('left')) {
                 <td width="25%" align="right">
                     <?php
                     if ($element->isImageStringSet('right')) {
-                        $this->widget('application.modules.eyedraw.OEEyeDrawWidgetAnteriorSegment', array(
+                        $this->widget('application.modules.eyedraw.OEEyeDrawWidgetAnteriorSegmentGlaucoma', array(
                             'identifier' => 'AnteriorSegmentRight',
                             'side' => 'R',
                             'mode' => 'view',
@@ -84,7 +84,7 @@ if ($element->isImageStringSet('right') || $element->isImageStringSet('left')) {
                 <td width="25%"  align="left">
                     <?php
                     if ($element->isImageStringSet('left')) {
-                        $this->widget('application.modules.eyedraw.OEEyeDrawWidgetAnteriorSegment', array(
+                        $this->widget('application.modules.eyedraw.OEEyeDrawWidgetAnteriorSegmentGlaucoma', array(
                             'identifier' => 'AnteriorSegmentLeft',
                             'side' => 'L',
                             'mode' => 'view',
