@@ -24,11 +24,11 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
         $this->createTable($tableName, array_merge(array(
                     'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
                     'event_id' => 'int(10) unsigned NOT NULL',
-                    'description_left' => 'text COLLATE utf8_bin',
-                    'description_right' => 'text COLLATE utf8_bin',
-                    'image_string_left' => 'text COLLATE utf8_bin',
-                    'image_string_right' => 'text COLLATE utf8_bin'), $this->getDefaults($suffix)
-                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin'
+                    'description_left' => 'text',
+                    'description_right' => 'text',
+                    'image_string_left' => 'text',
+                    'image_string_right' => 'text'), $this->getDefaults($suffix)
+                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci'
         );
     }
 
@@ -42,11 +42,11 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
         $this->createTable($tableName, array_merge(array(
                     'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
                     'event_id' => 'int(10) unsigned NOT NULL',
-                    'description_left' => 'text COLLATE utf8_bin',
-                    'description_right' => 'text COLLATE utf8_bin',
-                    'image_string_left' => 'text COLLATE utf8_bin',
-                    'image_string_right' => 'text COLLATE utf8_bin'), $this->getDefaults($suffix)
-                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin'
+                    'description_left' => 'text',
+                    'description_right' => 'text',
+                    'image_string_left' => 'text',
+                    'image_string_right' => 'text'), $this->getDefaults($suffix)
+                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci'
         );
     }
 
@@ -64,11 +64,11 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'gonio_right' => 'int(1) unsigned not null',
                     'van_herick_left' => 'int(1) unsigned not null',
                     'van_herick_right' => 'int(1) unsigned not null',
-                    'description_left' => 'text COLLATE utf8_bin',
-                    'description_right' => 'text COLLATE utf8_bin',
-                    'image_string_left' => 'text COLLATE utf8_bin',
-                    'image_string_right' => 'text COLLATE utf8_bin'), $this->getDefaults($suffix)
-                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin'
+                    'description_left' => 'text',
+                    'description_right' => 'text',
+                    'image_string_left' => 'text',
+                    'image_string_right' => 'text'), $this->getDefaults($suffix)
+                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci'
         );
     }
 
@@ -86,7 +86,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'instrument_left' => 'tinyint(2) DEFAULT NULL',
                     'right_iop' => 'tinyint(4) DEFAULT NULL',
                     'left_iop' => 'tinyint(4) DEFAULT NULL'), $this->getDefaults($suffix)
-                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin'
+                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci'
         );
     }
 
@@ -103,7 +103,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'medication_1' => 'int(2) DEFAULT NULL',
                     'medication_2' => 'int(2) DEFAULT NULL',
                     'medication_3' => 'int(2) DEFAULT NULL'), $this->getDefaults($suffix)
-                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin'
+                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci'
         );
     }
 
@@ -130,7 +130,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'right_aid' => 'tinyint(1) unsigned DEFAULT NULL',
                     'left_aid' => 'tinyint(1) unsigned DEFAULT NULL',
                         ), $this->getDefaults($suffix)
-                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin'
+                ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci'
         );
     }
 
@@ -144,14 +144,14 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
         $this->createTable($tableName, array_merge(
         array('id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
         'event_id' => 'int(10) unsigned NOT NULL',
-        'description_left' => 'text COLLATE utf8_bin',
-        'description_right' => 'text COLLATE utf8_bin',
-        'image_string_left' => 'text COLLATE utf8_bin',
-        'image_string_right' => 'text COLLATE utf8_bin',
+        'description_left' => 'text',
+        'description_right' => 'text',
+        'image_string_left' => 'text',
+        'image_string_right' => 'text',
         'size_left' => 'int(10) unsigned NOT NULL',
         'size_right' => 'int(10) unsigned NOT NULL'),
         $this->getDefaults($suffix)
-        ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+        ), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
     }
 
     /**
@@ -173,7 +173,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
                     'photo_id' => 'int(10) unsigned NOT NULL',
                     'pid' => 'varchar(20) NOT NULL',
-                    'original_filename' => 'varchar(100) NOT NULL',), $this->getDefaults($suffix, false)), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                    'original_filename' => 'varchar(100) NOT NULL',), $this->getDefaults($suffix, false)), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
         $suffix = 'disc_info';
         $this->createTable($this->getTableName($suffix), array_merge(array(
@@ -191,7 +191,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'diagnosis4' => 'text',
                     'examiner' => 'text',
                     'eye' => 'char',
-                    'comments' => 'text',), $this->getDefaults($suffix, false)), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                    'comments' => 'text',), $this->getDefaults($suffix, false)), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
         /*
           create table oesb_stereo_file_data(id int not null auto_increment, primary key(id), photo_id int, pid varchar(20), original_filename varchar(100));" --password=$DB_USER_PASSWORD
           report_success $? "Created stereo text file data table 'oesb_stereo_file_data'
@@ -412,28 +412,28 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'event_id' => 'int(10) unsigned NOT NULL',
                     'diagnosis_left' => 'int(10)',
                     'diagnosis_right' => 'int(10)',
-                        ), $this->getDefaults('diagnosis')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                        ), $this->getDefaults('diagnosis')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
         // Create a table to store the ElementDetails element
         $this->createTable($this->getTableName('oc_hist'), array_merge(array(
                     'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
                     'event_id' => 'int(10) unsigned NOT NULL',
                     'comments' => 'varchar(255)',
-                        ), $this->getDefaults('oc_hist')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                        ), $this->getDefaults('oc_hist')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
         // Create a table to store the ElementDetails element
         $this->createTable($this->getTableName('med_hist'), array_merge(array(
                     'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
                     'event_id' => 'int(10) unsigned NOT NULL',
                     'comments' => 'varchar(255)',
-                        ), $this->getDefaults('med_hist')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                        ), $this->getDefaults('med_hist')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
         // Create a table to store the ElementDetails element
         $this->createTable($this->getTableName('fam_hist'), array_merge(array(
                     'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
                     'event_id' => 'int(10) unsigned NOT NULL',
                     'comments' => 'varchar(255)',
-                        ), $this->getDefaults('fam_hist')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                        ), $this->getDefaults('fam_hist')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
         // Create a table to store the ElementDetails element
         $this->createTable($this->getTableName('risks'), array_merge(array(
@@ -451,13 +451,13 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'asthma' => 'tinyint(1) unsigned NOT NULL DEFAULT 0',
                     'sob' => 'tinyint(1) unsigned NOT NULL DEFAULT 0',
                     'hypotension' => 'tinyint(1) unsigned NOT NULL DEFAULT 0',
-                        ), $this->getDefaults('risks')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                        ), $this->getDefaults('risks')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
         $this->createTable($this->getTableName('medications'), array_merge(array(
                     'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
                     'event_id' => 'int(10) unsigned NOT NULL',
                     'comments' => 'varchar(255)',
-                        ), $this->getDefaults('medications')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                        ), $this->getDefaults('medications')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
         $this->createVisualAcuityTable();
 
@@ -466,7 +466,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'event_id' => 'int(10) unsigned NOT NULL',
                     'left' => 'varchar(255)',
                     'right' => 'varchar(255)',
-                        ), $this->getDefaults('as')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                        ), $this->getDefaults('as')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
         // Create a table to store the ElementDetails element
         $this->createTable($this->getTableName('fup'), array_merge(array(
@@ -476,7 +476,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
                     'follow_up' => 'int(10) unsigned NOT NULL',
                     'visit' => 'int(10) unsigned DEFAULT 0',
                     'location' => 'varchar(255)',
-                        ), $this->getDefaults('fup')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+                        ), $this->getDefaults('fup')), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
     }
 
     /**
