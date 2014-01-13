@@ -8,10 +8,10 @@ class m131205_141328_table_versioning extends CDbMigration
 CREATE TABLE `et_ophciglaucomaexamination_ant_seg_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`description_left` text COLLATE utf8_bin,
-	`description_right` text COLLATE utf8_bin,
-	`image_string_left` text COLLATE utf8_bin,
-	`image_string_right` text COLLATE utf8_bin,
+	`description_left` text,
+	`description_right` text,
+	`image_string_left` text,
+	`image_string_right` text,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -25,7 +25,7 @@ CREATE TABLE `et_ophciglaucomaexamination_ant_seg_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_ant_seg_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_ant_seg_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_ant_seg_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_ant_seg_version','id','int(10) unsigned NOT NULL');
@@ -44,8 +44,8 @@ CREATE TABLE `et_ophciglaucomaexamination_ant_seg_version` (
 CREATE TABLE `et_ophciglaucomaexamination_as_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`left` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-	`right` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+	`left` varchar(255) DEFAULT NULL,
+	`right` varchar(255) DEFAULT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -57,7 +57,7 @@ CREATE TABLE `et_ophciglaucomaexamination_as_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_as_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_as_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_as_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_as_version','id','int(10) unsigned NOT NULL');
@@ -93,7 +93,7 @@ CREATE TABLE `et_ophciglaucomaexamination_diagnosis_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_diagnosis_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_diagnosis_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_diagnosis_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_diagnosis_version','id','int(10) unsigned NOT NULL');
@@ -112,8 +112,8 @@ CREATE TABLE `et_ophciglaucomaexamination_diagnosis_version` (
 CREATE TABLE `et_ophciglaucomaexamination_disc_files_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`photo_id` int(10) unsigned NOT NULL,
-	`pid` varchar(20) COLLATE utf8_bin NOT NULL,
-	`original_filename` varchar(100) COLLATE utf8_bin NOT NULL,
+	`pid` varchar(20) NOT NULL,
+	`original_filename` varchar(100) NOT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -123,7 +123,7 @@ CREATE TABLE `et_ophciglaucomaexamination_disc_files_version` (
 	KEY `acv_et_ophciglaucomaexamination_disc_files_created_user_id_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_disc_files_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_disc_files_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_disc_files_version','id','int(10) unsigned NOT NULL');
@@ -142,19 +142,19 @@ CREATE TABLE `et_ophciglaucomaexamination_disc_files_version` (
 CREATE TABLE `et_ophciglaucomaexamination_disc_info_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`photo_id` int(10) unsigned NOT NULL,
-	`pid` varchar(20) COLLATE utf8_bin DEFAULT NULL,
-	`name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+	`pid` varchar(20) DEFAULT NULL,
+	`name` varchar(50) DEFAULT NULL,
 	`exam_date` date DEFAULT NULL,
 	`exam_time` time DEFAULT NULL,
-	`dob` varchar(20) COLLATE utf8_bin DEFAULT NULL,
-	`gender` char(1) COLLATE utf8_bin DEFAULT NULL,
-	`diagnosis1` text COLLATE utf8_bin,
-	`diagnosis2` text COLLATE utf8_bin,
-	`diagnosis3` text COLLATE utf8_bin,
-	`diagnosis4` text COLLATE utf8_bin,
-	`examiner` text COLLATE utf8_bin,
-	`eye` char(1) COLLATE utf8_bin DEFAULT NULL,
-	`comments` text COLLATE utf8_bin,
+	`dob` varchar(20) DEFAULT NULL,
+	`gender` char(1) DEFAULT NULL,
+	`diagnosis1` text,
+	`diagnosis2` text,
+	`diagnosis3` text,
+	`diagnosis4` text,
+	`examiner` text,
+	`eye` char(1) DEFAULT NULL,
+	`comments` text,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -164,7 +164,7 @@ CREATE TABLE `et_ophciglaucomaexamination_disc_info_version` (
 	KEY `acv_et_ophciglaucomaexamination_disc_info_created_user_id_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_disc_info_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_disc_info_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_disc_info_version','id','int(10) unsigned NOT NULL');
@@ -183,7 +183,7 @@ CREATE TABLE `et_ophciglaucomaexamination_disc_info_version` (
 CREATE TABLE `et_ophciglaucomaexamination_fam_hist_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`comments` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+	`comments` varchar(255) DEFAULT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -195,7 +195,7 @@ CREATE TABLE `et_ophciglaucomaexamination_fam_hist_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_fam_hist_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_fam_hist_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_fam_hist_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_fam_hist_version','id','int(10) unsigned NOT NULL');
@@ -217,7 +217,7 @@ CREATE TABLE `et_ophciglaucomaexamination_fup_version` (
 	`event_id` int(10) unsigned NOT NULL,
 	`follow_up` int(10) unsigned NOT NULL,
 	`visit` int(10) unsigned DEFAULT '0',
-	`location` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+	`location` varchar(255) DEFAULT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -229,7 +229,7 @@ CREATE TABLE `et_ophciglaucomaexamination_fup_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_fup_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_fup_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_fup_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_fup_version','id','int(10) unsigned NOT NULL');
@@ -252,10 +252,10 @@ CREATE TABLE `et_ophciglaucomaexamination_gonioscopy_version` (
 	`gonio_right` int(1) unsigned NOT NULL,
 	`van_herick_left` int(1) unsigned NOT NULL,
 	`van_herick_right` int(1) unsigned NOT NULL,
-	`description_left` text COLLATE utf8_bin,
-	`description_right` text COLLATE utf8_bin,
-	`image_string_left` text COLLATE utf8_bin,
-	`image_string_right` text COLLATE utf8_bin,
+	`description_left` text,
+	`description_right` text,
+	`image_string_left` text,
+	`image_string_right` text,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -267,7 +267,7 @@ CREATE TABLE `et_ophciglaucomaexamination_gonioscopy_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_gonioscopy_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_gonioscopy_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_gonioscopy_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_gonioscopy_version','id','int(10) unsigned NOT NULL');
@@ -301,7 +301,7 @@ CREATE TABLE `et_ophciglaucomaexamination_iop_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_iop_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_iop_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_iop_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_iop_version','id','int(10) unsigned NOT NULL');
@@ -320,7 +320,7 @@ CREATE TABLE `et_ophciglaucomaexamination_iop_version` (
 CREATE TABLE `et_ophciglaucomaexamination_med_hist_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`comments` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+	`comments` varchar(255) DEFAULT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -332,7 +332,7 @@ CREATE TABLE `et_ophciglaucomaexamination_med_hist_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_med_hist_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_med_hist_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_med_hist_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_med_hist_version','id','int(10) unsigned NOT NULL');
@@ -351,7 +351,7 @@ CREATE TABLE `et_ophciglaucomaexamination_med_hist_version` (
 CREATE TABLE `et_ophciglaucomaexamination_medications_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`comments` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+	`comments` varchar(255) DEFAULT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -363,7 +363,7 @@ CREATE TABLE `et_ophciglaucomaexamination_medications_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_medications_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_medications_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_medications_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_medications_version','id','int(10) unsigned NOT NULL');
@@ -382,7 +382,7 @@ CREATE TABLE `et_ophciglaucomaexamination_medications_version` (
 CREATE TABLE `et_ophciglaucomaexamination_oc_hist_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`comments` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+	`comments` varchar(255) DEFAULT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -394,7 +394,7 @@ CREATE TABLE `et_ophciglaucomaexamination_oc_hist_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_oc_hist_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_oc_hist_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_oc_hist_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_oc_hist_version','id','int(10) unsigned NOT NULL');
@@ -413,10 +413,10 @@ CREATE TABLE `et_ophciglaucomaexamination_oc_hist_version` (
 CREATE TABLE `et_ophciglaucomaexamination_optic_disk_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`description_left` text COLLATE utf8_bin,
-	`description_right` text COLLATE utf8_bin,
-	`image_string_left` text COLLATE utf8_bin,
-	`image_string_right` text COLLATE utf8_bin,
+	`description_left` text,
+	`description_right` text,
+	`image_string_left` text,
+	`image_string_right` text,
 	`size_left` int(10) unsigned NOT NULL,
 	`size_right` int(10) unsigned NOT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -430,7 +430,7 @@ CREATE TABLE `et_ophciglaucomaexamination_optic_disk_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_optic_disk_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_optic_disk_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_optic_disk_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_optic_disk_version','id','int(10) unsigned NOT NULL');
@@ -449,10 +449,10 @@ CREATE TABLE `et_ophciglaucomaexamination_optic_disk_version` (
 CREATE TABLE `et_ophciglaucomaexamination_post_seg_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`description_left` text COLLATE utf8_bin,
-	`description_right` text COLLATE utf8_bin,
-	`image_string_left` text COLLATE utf8_bin,
-	`image_string_right` text COLLATE utf8_bin,
+	`description_left` text,
+	`description_right` text,
+	`image_string_left` text,
+	`image_string_right` text,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -464,7 +464,7 @@ CREATE TABLE `et_ophciglaucomaexamination_post_seg_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_post_seg_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_post_seg_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_post_seg_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_post_seg_version','id','int(10) unsigned NOT NULL');
@@ -500,7 +500,7 @@ CREATE TABLE `et_ophciglaucomaexamination_presc_meds_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_presc_meds_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_presc_meds_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_phciglaucomaexamination_presc_meds_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_presc_meds_version','id','int(10) unsigned NOT NULL');
@@ -542,7 +542,7 @@ CREATE TABLE `et_ophciglaucomaexamination_risks_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_risks_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_risks_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_risks_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_risks_version','id','int(10) unsigned NOT NULL');
@@ -585,7 +585,7 @@ CREATE TABLE `et_ophciglaucomaexamination_va_version` (
 	CONSTRAINT `acv_et_ophciglaucomaexamination_va_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_va_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophciglaucomaexamination_va_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophciglaucomaexamination_va_version','id','int(10) unsigned NOT NULL');
