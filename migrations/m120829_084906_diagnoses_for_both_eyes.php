@@ -4,7 +4,7 @@ require_once 'DbHelper.php';
 
 class m120829_084906_diagnoses_for_both_eyes extends DbHelper {
 
-    public function safeUp() {
+    public function up() {
         $this->renameColumn($this->getTableName('diagnosis'), 'diagnosis_left', 'diagnosis_1_left');
         $this->renameColumn($this->getTableName('diagnosis'), 'diagnosis_right', 'diagnosis_1_right');
         $this->addColumn($this->getTableName('diagnosis'), 'diagnosis_2_left', 'integer(10) default NULL');
@@ -13,7 +13,7 @@ class m120829_084906_diagnoses_for_both_eyes extends DbHelper {
         $this->addColumn($this->getTableName('diagnosis'), 'diagnosis_3_right', 'integer(10) default NULL');
     }
 
-    public function safeDown() {
+    public function down() {
         $this->renameColumn($this->getTableName('diagnosis'), 'diagnosis_1_left', 'diagnosis_left');
         $this->renameColumn($this->getTableName('diagnosis'), 'diagnosis_1_right', 'diagnosis_right');
         $this->dropColumn($this->getTableName('diagnosis'), 'diagnosis_2_left');

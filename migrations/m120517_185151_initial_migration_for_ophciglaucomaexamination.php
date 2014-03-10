@@ -482,7 +482,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
     /**
      * Create all tables. Insert necessary data. 
      */
-    public function safeUp() {
+    public function up() {
         $group = $this->dbConnection->createCommand()
                 ->select('id')
                 ->from('event_group')
@@ -508,7 +508,7 @@ class m120517_185151_initial_migration_for_ophciglaucomaexamination
     /**
      * Deletes all data and drops all tables. 
      */
-    public function safeDown() {
+    public function down() {
         // Find the event type
         $event_type = $this->dbConnection->createCommand()
                 ->select('id')
